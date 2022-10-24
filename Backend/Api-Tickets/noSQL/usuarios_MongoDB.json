@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "6355c8c01b1f77f9b0873a4b"
+  },
+  "idRol": {
+    "$oid": "6354bca4099fe39be37dd1c7"
+  },
+  "nombresUsuario": "William Maldonado",
+  "celularUsuario": {
+    "$numberLong": "3215465985"
+  },
+  "correoUsuario": "williamaldonado@gmail.com",
+  "direccionUsuario": "portela",
+  "usuarioAcceso": "williamaldonado@gmail.com",
+  "claveAcceso": "$2b$10$yjzbO6AipOdOsPs5i2LKcOqxXEjHndzMr0G4XaCEEhKI8yMVUAYOe",
+  "estadoUsuario": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666566336340"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666566336340"
+    }
+  },
+  "__v": 0
+}]
