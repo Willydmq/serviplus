@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "6354bca4099fe39be37dd1c7"
+  },
+  "nombreRol": "ADMIN",
+  "estadoRol": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666497700749"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666497700749"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6355bd39b4a074142f7683dd"
+  },
+  "nombreRol": "AGENTE",
+  "estadoRol": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666563385649"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666563385649"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6355bd41b4a074142f7683e0"
+  },
+  "nombreRol": "CLIENTE",
+  "estadoRol": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666563393246"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666563393246"
+    }
+  },
+  "__v": 0
+}]

@@ -5,14 +5,18 @@ import {
   eliminar,
   editar,
   listarUno,
+  autenticar,
 } from "../controllers/usuarioController.js";
+import validarAutenticacion from "../middleware/validarAutenticacion.js";
 
 const router = express.Router();
 
-router.get("/", listar);
-router.get("/:id", listarUno);
-router.post("/", agregar);
-router.put("/", editar);
-router.delete("/", eliminar);
+router.get("/", validarAutenticacion, listar);
+router.get("/:id", validarAutenticacion, listarUno);
+router.post("/", validarAutenticacion, agregar);
+router.put("/:id", validarAutenticacion, editar);
+router.delete("/:id", validarAutenticacion, eliminar);
+
+router.post("/login", autenticar);
 
 export default router;

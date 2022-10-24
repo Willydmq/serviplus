@@ -12,7 +12,7 @@ const router = express.Router();
 router.get("/", listar);
 router.get("/:id", listarUno);
 router.post("/", agregar);
-router.put("/", editar);
-router.delete("/", eliminar);
+router.put("/:id", editar);
+router.delete("/:id", eliminar);
 
 export default router;

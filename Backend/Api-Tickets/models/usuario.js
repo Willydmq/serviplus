@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const usuarioSchema = mongoose.Schema(
   {
@@ -49,6 +50,15 @@ const usuarioSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+usuarioSchema.pre("save", async function (next) {
+  const salt = await bcrypt.genSalt(10);
+  this.claveAcceso = await bcrypt.hash(this.claveAcceso, salt);
+});
+
+usuarioSchema.methods.comprobarClave = async function (claveFormulario) {
+  return await bcrypt.compare(claveFormulario, this.claveAcceso);
+};
 
 const Usuario = mongoose.model("Usuario", usuarioSchema);
 export default Usuario;

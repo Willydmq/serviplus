@@ -1,6 +1,13 @@
 import Rol from "../models/rol.js";
 
 const agregar = async (req, res) => {
+  const { nombreRol } = req.body;
+  const existeRol = await Rol.findOne({ nombreRol });
+
+  if (existeRol) {
+    const error = new Error("Rol ya esta registrado en la base de datos");
+    return res.status(400).json({ msg: error.message, ok: "NO" });
+  }
   try {
     const rol = new Rol(req.body);
     const rolAlmacenado = await rol.save();
