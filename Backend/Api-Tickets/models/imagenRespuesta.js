@@ -1,31 +1,26 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
-const imagenRespuestaSchema = mongoose.Schema(
-  {
+const ImagenRespuestaSchema = mongoose.Schema({
     idRespuestaTicket: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Ticket",
-      require: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Ticket",
+        require: true
     },
+
     nombrePublicoImagen: {
-      type: String,
-      require: true,
-      trim: true,
+        type: String,
+        require: true,
+        trim: true
     },
+
     nombrePrivateImagen: {
-      type: String,
-      require: true,
-      trim: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+        type: String,
+        require: true,
+        trim: true
+    }
+}, {
+    timestamps: true
+});
 
-const ImagenRespuesta = mongoose.model(
-  "ImagenRespuesta",
-  imagenRespuestaSchema
-);
-
+const ImagenRespuesta = mongoose.model("ImagenRespuesta", ImagenRespuestaSchema);
 export default ImagenRespuesta;

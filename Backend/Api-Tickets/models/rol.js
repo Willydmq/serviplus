@@ -1,23 +1,21 @@
 import mongoose from "mongoose";
 
-const rolSchema = mongoose.Schema(
-  {
+const rolSchema = mongoose.Schema({
     nombreRol: {
-      type: String,
-      require: true,
-      trim: true,
-      unique: true,
+        type: String,
+        require: true,
+        trim: true,
+        unique: true
     },
+
     estadoRol: {
-      type: Number,
-      require: true,
-      trim: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+        type: Number,
+        require: true,
+        trim: true
+    }
+}, {
+    timestamps: true
+});
 
 const Rol = mongoose.model("Rol", rolSchema);
 export default Rol;

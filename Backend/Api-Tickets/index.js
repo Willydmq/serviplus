@@ -1,38 +1,54 @@
-// const express = require("express");
+//const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
+import conectarDB from './config/db.js';
+import cors from 'cors';
 
-import express from "express";
-import dotenv from "dotenv";
-import conectarDB from "./config/db.js";
-import rolesRoutes from "./routes/rolesRoutes.js";
-import usuariosRoutes from "./routes/usuariosRoutes.js";
-import categoriasRoutes from "./routes/categoriasRoutes.js";
-import ticketsRoutes from "./routes/ticketsRoutes.js";
-import respuestaTicketsRoutes from "./routes/respuestaTicketsRoutes.js";
-import imagenTicketsRoutes from "./routes/imagenTicketsRoutes.js";
-import imagenRespuestasRoutes from "./routes/imagenRespuestasRoutes.js";
+//importar archivos de las rutas
+import rolesRoutes from './routes/rolesRoutes.js';
+import usuariosRoutes from './routes/usuariosRoutes.js';
+import categoriasRoutes from './routes/categoriasRoutes.js';
+import ticketsRoutes from './routes/ticketsRoutes.js';
+import respuestasTicketsRoutes from './routes/respuestasTicketsRoutes.js';
+import imagenesTicketsRoutes from './routes/imagenesTicketsRoutes.js';
+import imagenesRespuestasRoutes from './routes/imagenesRespuestasRoutes.js';
 
-/* Creando una instancia del framework express. */
+//iniciamos el servidor de express
 const app = express();
+app.use(express.json());//para leer datos en formato json
 
-/* Esta es una forma de establecer el número de puerto para el servidor. */
+//inicializamos las variables de ambiente
 dotenv.config();
 
-/* Un middleware que analiza el cuerpo de la solicitud y lo pone a disposición en la propiedad
-req.body. */
-app.use(express.json());
-
-/* Conexión a la base de datos. */
+//conectar a la base de datos mongoDB
 conectarDB();
 
+//permitir conexiones externas con cors
+const listaBlanca = [process.env.FRONTEND_URL]
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (listaBlanca.includes(origin)) {
+            //puede consumir el api
+            callback(null, true);
+        } else {
+            //no puede consumir el api
+            callback(new Error("Error de permisos cors."));
+        }
+    },
+};
+app.use(cors(corsOptions));
+
+//routing
 app.use("/api/roles", rolesRoutes);
 app.use("/api/usuarios", usuariosRoutes);
 app.use("/api/categorias", categoriasRoutes);
 app.use("/api/tickets", ticketsRoutes);
-app.use("/api/restickets", respuestaTicketsRoutes);
-app.use("/api/imagenesrespuestas", imagenRespuestasRoutes);
+app.use("/api/restickets", respuestasTicketsRoutes);
+app.use("/api/imagenestickets", imagenesTicketsRoutes);
+app.use("/api/imagenerespuestas", imagenesRespuestasRoutes);
 
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-  console.log(`servidor corriendo en el puerto ${PORT}`);
+    console.log(`servidor corriendo en el puerto ${PORT}`);
 });

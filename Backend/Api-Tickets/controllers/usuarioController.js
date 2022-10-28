@@ -1,58 +1,90 @@
-import Usuario from "../models/usuario.js";
+import Usuario from "../models/Usuario.js";
 import generarJWT from "../helpers/generarJWT.js";
 
 const agregar = async (req, res) => {
-  const { usuarioAcceso } = req.body;
-  const existeusuario = await Usuario.findOne({ usuarioAcceso });
+    //evitar usuarios duplicados por el usuarioAcceso
+    const { usuarioAcceso } = req.body;
+    const existeUsuario = await Usuario.findOne({ usuarioAcceso });
 
-  if (existeusuario) {
-    const error = new Error("Usuario ya esta registrado enla bse de datos");
-    return res.status(400).json({ msg: error.message, ok: "NO" });
-  }
+    if (existeUsuario) {
+        const error = new Error("Usuario ya esta registrado en la base de datos.");
+        return res.status(400).json({ msg: error.message, ok: "NO" });
+    }
 
-  try {
-    const usuario = new Usuario(req.body);
-    const usuarioGuardado = await usuario.save();
-    res.json({ body: usuarioGuardado, ok: "SI" });
-  } catch (error) {
-    console.log(error);
-  }
-};
+    try {
+        const usuario = new Usuario(req.body);
+        const usuarioGuardado = await usuario.save();
+        res.json({ body: usuarioGuardado, ok: "SI" });
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 const listar = async (req, res) => {
-  console.log("respondiendo desde el metodo listar usuarios");
-};
+    console.log("respondiedo desde el metodo listar");
+}
 
 const eliminar = async (req, res) => {
-  console.log("respondiendo desde el metodo eliminar usuarios");
-};
+    console.log("respondiedo desde el metodo eliminar");
+}
 
 const editar = async (req, res) => {
-  console.log("respondiendo desde el metodo editar usuarios");
-};
+    console.log("respondiedo desde el metodo editar");
+}
 
 const listarUno = async (req, res) => {
-  console.log("respondiendo desde el metodo listarUno usuarios");
-};
+    console.log("respondiedo desde el metodo listarUno");
+}
 
 const autenticar = async (req, res) => {
-  const { usuarioAcceso, claveAcceso } = req.body;
-  const usuario = await Usuario.findOne({ usuarioAcceso });
-  if (!usuario) {
-    const error = new Error("El usuario no existe");
-    return res.status(404).json({ msg: error.message });
-  }
-  if (await usuario.comprobarClave(claveAcceso)) {
-    res.json({
-      _id: usuario._id,
-      nombresUsuario: usuario.nombresUsuario,
-      usuarioAcceso: usuario.usuarioAcceso,
-      tokenJwt: generarJWT(usuario._id),
-    });
-  } else {
-    const error = new Error("La clave es incorrecta");
-    res.json({ msg: error.message });
-  }
-};
+    const { usuarioAcceso, claveAcceso } = req.body;
 
-export { agregar, listar, eliminar, editar, listarUno, autenticar };
+    //comprobar si el usuario existe
+    const usuario = await Usuario.findOne({ usuarioAcceso });
+    if (!usuario) {
+        const error = new Error("El usuario no existe.");
+        return res.status(404).json({ msg: error.message });
+    }
+
+    //comprobar la contraseña
+    if (await usuario.comprobarClave(claveAcceso)) {
+        res.json({
+            _id: usuario._id,
+            nombresUsuario: usuario.nombresUsuario,
+            usuarioAcceso: usuario.usuarioAcceso,
+            tokenJwt: generarJWT(usuario._id)
+        });
+    } else {
+        const error = new Error("La clave es incorrecta.");
+        res.json({ msg: error.message });
+    }
+}
+
+const crearCuenta = async (req, res) => {
+    //evitar usuarios duplicados por el usuarioAcceso
+    const { usuarioAcceso } = req.body;
+    const existeUsuario = await Usuario.findOne({ usuarioAcceso });
+
+    if (existeUsuario) {
+        const error = new Error("Usuario ya esta registrado en la base de datos.");
+        return res.status(400).json({ msg: error.message, ok: "NO" });
+    }
+
+    try {
+        const usuario = new Usuario(req.body);
+        const usuarioGuardado = await usuario.save();
+        res.json({ body: usuarioGuardado, ok: "SI" });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export {
+    agregar,
+    listar,
+    eliminar,
+    editar,
+    listarUno,
+    autenticar,
+    crearCuenta
+}
