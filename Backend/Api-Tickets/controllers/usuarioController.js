@@ -43,7 +43,7 @@ const autenticar = async (req, res) => {
     const usuario = await Usuario.findOne({ usuarioAcceso });
     if (!usuario) {
         const error = new Error("El usuario no existe.");
-        return res.status(404).json({ msg: error.message });
+        return res.status(404).json({ msg: error.message, ok: "NO_EXISTE" });
     }
 
     //comprobar la contraseña
@@ -56,11 +56,12 @@ const autenticar = async (req, res) => {
         });
     } else {
         const error = new Error("La clave es incorrecta.");
-        res.json({ msg: error.message });
+        res.json({ msg: error.message, ok: "CLAVE_ERRONEA" });
     }
 }
 
 const crearCuenta = async (req, res) => {
+    console.log('crear cuenta')
     //evitar usuarios duplicados por el usuarioAcceso
     const { usuarioAcceso } = req.body;
     const existeUsuario = await Usuario.findOne({ usuarioAcceso });
@@ -73,7 +74,7 @@ const crearCuenta = async (req, res) => {
     try {
         const usuario = new Usuario(req.body);
         const usuarioGuardado = await usuario.save();
-        res.json({ body: usuarioGuardado, ok: "SI" });
+        res.json({ body: usuarioGuardado, ok: "SI", msg: "Registro creado correctamente." });
     } catch (error) {
         console.log(error);
     }

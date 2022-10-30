@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import APIInvoke from '../../helpers/APIInvoke.js';
+import config from '../../config.js';
+import mensajeConfirmacion from '../../helpers/Mensajes.js';
 
 const CrearCuenta = () => {
 
@@ -12,8 +13,9 @@ const CrearCuenta = () => {
         celular: '',
         correo: '',
         nombreusuario: '',
-        clave: ''
-    })
+        clave: '',
+        estado: config.api.estadoUsuarioActivo
+    });
 
     const { nombre, celular, correo, nombreusuario, clave } = usuario;
 
@@ -35,9 +37,30 @@ const CrearCuenta = () => {
 
     const crearCuenta = async () => {
         const body = {
-            
+            idRol: usuario.idrol,
+            nombresUsuario: usuario.nombre,
+            celularUsuario: usuario.celular,
+            correoUsuario: usuario.correo,
+            usuarioAcceso: usuario.nombreusuario,
+            claveAcceso: usuario.clave,
+            estadoUsuario: usuario.estado
         }
         const response = await APIInvoke.invokePOST(`/api/usuarios/crear-cuenta`, body);
+
+        if (response.ok === "SI") {
+            mensajeConfirmacion('success', response.msg);
+            //cambiar el estado
+            setUsuario({
+                nombre: '',
+                celular: '',
+                correo: '',
+                nombreusuario: '',
+                clave: ''
+            });
+        } else {
+            mensajeConfirmacion('error', response.msg);
+        }
+
     }
 
     return (
