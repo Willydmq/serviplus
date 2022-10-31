@@ -1,7 +1,7 @@
 {
   "name": "api-tickets",
   "version": "1.0.0",
-  "description": "apis para la gestion de tickets de soporte",
+  "description": "api para la gestion de tickets de soporte",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -9,14 +9,15 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "WilliamMaldonado",
+  "author": "JHON JAIRO CORTES PAREDES",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.7"
+    "mongoose": "^6.6.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
