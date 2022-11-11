@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "636c72bc45a25aea3aa70f99"
+  },
+  "nombreCategoria": "Soporte Facturación",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668051644137"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668051644137"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636c72cb45a25aea3aa70f9c"
+  },
+  "nombreCategoria": "Soporte Contabilidad financiera",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668051659475"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668125557386"
+    }
+  },
+  "__v": 0
+}]

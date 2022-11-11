@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import Usuario from "../models/usuario.js";
 
 const validarAutenticacion = async (req, res, next) => {
-  //   console.log(req.headers.authorization);
+    // console.log(req.headers.authorization);
   let tokenJwt;
   if (
     req.headers.authorization &&

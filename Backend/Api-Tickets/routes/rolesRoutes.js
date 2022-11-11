@@ -5,11 +5,13 @@ import {
   eliminar,
   editar,
   listarUno,
+  comboRoles,
 } from "../controllers/rolController.js";
 import validarAutenticacion from "../middleware/validarAutenticacion.js";
 
 const router = express.Router();
 
+router.get("/combo-roles", validarAutenticacion, comboRoles);
 router.get("/", validarAutenticacion, listar);
 router.get("/:id", validarAutenticacion, listarUno);
 router.post("/", validarAutenticacion, agregar);

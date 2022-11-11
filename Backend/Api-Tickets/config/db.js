@@ -1,17 +1,14 @@
-import mongoose from "mongoose";
+import mongoose, { connect } from "mongoose";
 
-const conectarDB = async () => {
-  try {
-    const connection = await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+const conectarDB = () => {
+  const urlConexion = String(process.env.MONGO_URI);
+  connect(urlConexion)
+    .then((con) => {
+      console.log(`conexion establecida con la base: ${urlConexion}`);
+    })
+    .catch((error) => {
+      console.log(error);
     });
-    const url = `${connection.connection.host}:${connection.connection.port}`;
-    console.log(`MongoDB Conectado en: ${url}`);
-  } catch (error) {
-    consoloe.log(`Error: ${error.message}`);
-    process.exit(1);
-  }
 };
 
 export default conectarDB;

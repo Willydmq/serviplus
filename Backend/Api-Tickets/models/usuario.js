@@ -26,7 +26,7 @@ const usuarioSchema = mongoose.Schema(
     },
     direccionUsuario: {
       type: String,
-      require: true,
+      require: false,
       trim: true,
     },
     usuarioAcceso: {
