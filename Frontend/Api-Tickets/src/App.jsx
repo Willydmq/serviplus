@@ -12,6 +12,8 @@ import DashBoard from "./paginas/dashBoard";
 import CategoriasAdmin from "./paginas/tickets/categoriasAdmin";
 import CategoriasCrear from "./paginas/tickets/categoriasCrear";
 import CategoriasEditar from "./paginas/tickets/categoriasEditar";
+import TicketsAdmin from "./paginas/tickets/ticketsAdmin";
+import TicketsCrear from "./paginas/tickets/ticketsCrear";
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
             exact
             element={<UsuariosEditar />}
           />
+          <Route path="/tickets-admin" exact element={<TicketsAdmin />} />
+          <Route path="/tickets-crear" exact element={<TicketsCrear />} />
         </Routes>
       </Router>
     </Fragment>

@@ -39,6 +39,11 @@ const ticketSchema = mongoose.Schema(
       require: true,
       trim: true,
     },
+    correoTicket: {
+      type: String,
+      require: true,
+      trim: true,
+    },
     estadoTicket: {
       type: Number,
       require: true,

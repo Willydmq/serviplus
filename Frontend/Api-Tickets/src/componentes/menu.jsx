@@ -67,7 +67,7 @@ const Menu = () => {
                 </Link>
               </li>
               <li>
-                <Link to={"#"}>
+                <Link to={"/tickets-admin"}>
                   <i className="bi bi-circle" />
                   <span>Tickets Admin</span>
                 </Link>
@@ -94,7 +94,7 @@ const Menu = () => {
               data-bs-parent="#sidebar-nav"
             >
               <li>
-                <Link to={"#"}>
+                <Link to={"/tickets-admin"}>
                   <i className="bi bi-circle" />
                   <span>Tickets Admin</span>
                 </Link>
@@ -145,7 +145,7 @@ const Menu = () => {
               data-bs-parent="#sidebar-nav"
             >
               <li>
-                <Link to={"#"}>
+                <Link to={"/tickets-admin"}>
                   <i className="bi bi-circle" />
                   <span>Tickets Admin</span>
                 </Link>
