@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "636dcdfc0951157c7072594b"
+  },
+  "idRol": {
+    "$oid": "6366eb043a508233c3e9018f"
+  },
+  "nombresUsuario": "German Maldonado",
+  "celularUsuario": {
+    "$numberLong": "3215698562"
+  },
+  "correoUsuario": "germanmaldonado@hotmail.com",
+  "direccionUsuario": "Via medellin",
+  "usuarioAcceso": "germanmaldonado@hotmail.com",
+  "claveAcceso": "$2b$10$.HhsgBF2t8pspcutYyV6.uvgPcMe1EERxw3j0uJx0PYM.pjzE7L3S",
+  "estadoUsuario": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668140540924"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668140540924"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636dce420951157c70725956"
+  },
+  "idRol": {
+    "$oid": "6366eb0b3a508233c3e90195"
+  },
+  "nombresUsuario": "Esther Quintero",
+  "celularUsuario": {
+    "$numberLong": "3215698562"
+  },
+  "correoUsuario": "estherquintero@hotmail.com",
+  "usuarioAcceso": "estherquintero@hotmail.com",
+  "claveAcceso": "$2b$10$2dvEf3TZN/lSBbTSaA5w8ewPqZDe9sZlpLNL1/w0mcGt3/eVwuJ.G",
+  "estadoUsuario": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668140610757"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668140610757"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636dd64d62dac4996e9b6b4e"
+  },
+  "idRol": {
+    "$oid": "6366eb123a508233c3e9019b"
+  },
+  "nombresUsuario": "William Maldonado",
+  "celularUsuario": {
+    "$numberLong": "3215698562"
+  },
+  "correoUsuario": "williammaldonado@hotmail.com",
+  "usuarioAcceso": "williammaldonado@hotmail.com",
+  "claveAcceso": "$2b$10$lrUCnDgjtOlta7yyPeOQge7hvwd/Rbf750z2pj5L7..NjpA0CDm96",
+  "estadoUsuario": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668142669401"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1668143956123"
+    }
+  },
+  "__v": 0,
+  "direccionUsuario": "Punta Arenas"
+}]
